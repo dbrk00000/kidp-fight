@@ -1,0 +1,340 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface2: #273548;
+  --border: #334155;
+  --text: #f1f5f9;
+  --text2: #94a3b8;
+  --accent: #3b82f6;
+  --accent2: #60a5fa;
+  --red: #ef4444;
+  --green: #22c55e;
+  --yellow: #f59e0b;
+  --purple: #a855f7;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 앱 레이아웃 */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+/* 헤더 */
+header {
+  padding: 16px 20px 12px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+header h1 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.3px;
+}
+
+header .subtitle {
+  font-size: 12px;
+  color: var(--text2);
+  margin-top: 2px;
+}
+
+.last-updated {
+  font-size: 11px;
+  color: var(--text2);
+  margin-top: 4px;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  margin-right: 4px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* 탭 */
+nav {
+  display: flex;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+nav::-webkit-scrollbar { display: none; }
+
+nav button {
+  flex: 1;
+  min-width: 70px;
+  padding: 12px 8px;
+  background: none;
+  border: none;
+  color: var(--text2);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+nav button.active {
+  color: var(--accent2);
+  border-bottom-color: var(--accent);
+  font-weight: 700;
+}
+
+/* 컨텐츠 영역 */
+main {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab-content { display: none; padding: 16px; }
+.tab-content.active { display: block; }
+
+/* 카드 */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  flex: 1;
+}
+
+.card-body {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+/* 태그 */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.tag-red { background: rgba(239,68,68,0.15); color: #f87171; }
+.tag-blue { background: rgba(59,130,246,0.15); color: #60a5fa; }
+.tag-green { background: rgba(34,197,94,0.15); color: #4ade80; }
+.tag-yellow { background: rgba(245,158,11,0.15); color: #fbbf24; }
+.tag-purple { background: rgba(168,85,247,0.15); color: #c084fc; }
+.tag-gray { background: rgba(148,163,184,0.15); color: #94a3b8; }
+
+/* 섹션 제목 */
+.section-title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  margin-top: 8px;
+}
+
+/* 뉴스 아이템 */
+.news-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.news-item:last-child { border-bottom: none; }
+
+.news-date {
+  font-size: 11px;
+  color: var(--text2);
+  white-space: nowrap;
+  padding-top: 2px;
+  min-width: 64px;
+}
+
+.news-title {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* 빈 상태 */
+.empty-state {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text2);
+}
+.empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+.empty-state p { font-size: 13px; line-height: 1.6; }
+
+/* 기관정보 */
+.info-row {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+.info-row:last-child { border-bottom: none; }
+.info-label {
+  font-size: 12px;
+  color: var(--text2);
+  min-width: 80px;
+  padding-top: 1px;
+}
+.info-value {
+  font-size: 13px;
+  color: var(--text);
+  flex: 1;
+  line-height: 1.5;
+}
+
+/* 사업 아코디언 */
+.biz-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.biz-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  cursor: pointer;
+  gap: 10px;
+  user-select: none;
+}
+
+.biz-icon { font-size: 20px; }
+
+.biz-name {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.biz-arrow {
+  font-size: 12px;
+  color: var(--text2);
+  transition: transform 0.2s;
+}
+
+.biz-item.open .biz-arrow { transform: rotate(180deg); }
+
+.biz-body {
+  display: none;
+  padding: 0 16px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.biz-item.open .biz-body { display: block; }
+
+.biz-summary {
+  font-size: 13px;
+  color: var(--text2);
+  margin: 12px 0 10px;
+  line-height: 1.6;
+}
+
+.biz-programs {
+  list-style: none;
+  margin-bottom: 12px;
+}
+
+.biz-programs li {
+  font-size: 12px;
+  color: var(--text2);
+  padding: 4px 0;
+  padding-left: 14px;
+  position: relative;
+}
+
+.biz-programs li::before {
+  content: '·';
+  position: absolute;
+  left: 4px;
+  color: var(--accent);
+}
+
+.biz-issue {
+  background: rgba(59,130,246,0.08);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 6px 6px 0;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: var(--accent2);
+  line-height: 1.6;
+}
+
+/* 아카이브 날짜 그룹 */
+.archive-date {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent2);
+  margin: 16px 0 8px;
+}
+
+/* 로딩 */
+.loading {
+  text-align: center;
+  padding: 32px;
+  color: var(--text2);
+  font-size: 13px;
+}
+
+/* 업데이트 배너 */
+.update-banner {
+  background: rgba(34,197,94,0.1);
+  border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #4ade80;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

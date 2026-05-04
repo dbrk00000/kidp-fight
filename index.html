@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="KIDP">
+  <title>KIDP 한국디자인진흥원</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>🎨 KIDP 한국디자인진흥원</h1>
+      <div class="subtitle">면접 준비 & 최신 이슈 모음</div>
+    </header>
+
+    <nav>
+      <button class="active" data-tab="updates">🔴 최신</button>
+      <button data-tab="org">🏛️ 기관정보</button>
+      <button data-tab="biz">📋 6대사업</button>
+      <button data-tab="archive">📅 아카이브</button>
+    </nav>
+
+    <main>
+      <div id="tab-updates" class="tab-content active">
+        <div class="loading">불러오는 중...</div>
+      </div>
+
+      <div id="tab-org" class="tab-content">
+        <div class="loading">불러오는 중...</div>
+      </div>
+
+      <div id="tab-biz" class="tab-content">
+        <div class="loading">불러오는 중...</div>
+      </div>
+
+      <div id="tab-archive" class="tab-content">
+        <div class="loading">불러오는 중...</div>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
